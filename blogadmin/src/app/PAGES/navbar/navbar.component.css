@@ -1,0 +1,43 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 120px;
+    padding-right: 90px;
+    margin-bottom: -16px;
+    color: white;
+    background: rgb(2, 24, 90);
+    position: sticky;
+    top: 0;
+    left: 0;
+    /* right: 0; */
+    z-index: 999;
+}
+
+.pages {
+    width: 200px;
+    display: flex;
+    justify-content: space-evenly;
+    /* z-index: 1000; */
+    /* background-color: white; */
+}
+
+.pages p:hover {
+    color: grey;
+}
+
+@media (max-width: 767px) {
+    .navbar {
+        padding-left: 25px;
+        padding-right: 10px;
+    }
+    .navbar h3 {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .navbar {
+        
+    }
+}
