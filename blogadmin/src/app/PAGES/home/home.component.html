@@ -1,5 +1,5 @@
 <div>
-    <app-navbar></app-navbar>
+    <app-navbar class="navbar"></app-navbar>
     <div class="main-div">
         <div class="area" >
             <ul class="circles">
@@ -19,10 +19,11 @@
         </div>
         <div class="post-area">
             <div class="recent-posts">
+                <p>My mother</p>
                 <h2>Recent posts</h2>
-                <button class="add-post"><mat-icon>add_circle</mat-icon>Add new post</button>
+                <button class="add-post hover" routerLink="/create-post"><mat-icon>add_circle</mat-icon>Add new post</button>
             </div>
-            <ngx-masonry [options]="{ gutter: 44 }" style="width: 91.5vw;" [ordered]="true" [ngClass]="{'intersected': intersected}">
+            <ngx-masonry [options]="{ gutter: 44 }" style="width: 100%;" [ordered]="true" [ngClass]="{'intersected': intersected}">
                 <div ngxMasonryItem class="masonry-item" [prepend]="true" *ngFor="let item of blogPosts" #blogPosts>
                     <mat-card>
                         <mat-card-header>
@@ -30,7 +31,7 @@
                         </mat-card-header>
                         <img mat-card-image src="../../../assets/vintage.jpg">
                         <mat-card-content>
-                            {{item.description}}
+                            {{ item.description | shorten: 15 }}
                         </mat-card-content>
                         <div class="clickables-div">
                             <div class="button-div">

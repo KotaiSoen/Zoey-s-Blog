@@ -1,4 +1,5 @@
 .main-div{
+    margin-top: -16px;
     height: 100%;
     width: 100%;
     /* margin-top: 62px; */
@@ -152,14 +153,33 @@
 .recent-posts {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     font-size: 22px;
     margin-right: 100px;
 }
 
-.add-post {
-    
+.recent-posts p {
+    visibility: hidden;
 }
+
+.recent-posts button {
+    width: 150px;
+    background-color: rgb(2, 24, 90);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.recent-posts .button-text {
+    padding-left: 10px;
+}
+
 
 .masonry-item{
     margin-top: 30px;
@@ -203,6 +223,11 @@ mat-card button {
     font-weight: 600;
 }
 
+.button-div:hover mat-icon, .button-div:focus mat-icon, .button-div:active mat-icon {
+    transform: translateX(5px);
+    transition-duration: 1s; 
+}
+
 .icon-div {
     width: 90px;
     display: flex;
@@ -238,12 +263,17 @@ mat-card button {
         font-size: 30px;
     }
 
+    .post-area {
+        padding-top: 30px;
+    }
+
     .recent-posts {
+        flex-direction: column;
         font-size: 16px;
     }
 
     .masonry-item {
-        width: 75.5%;
+        width: 100%;
     }
 
     .circles li:nth-child(1){
@@ -331,8 +361,8 @@ mat-card button {
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-    .area {
-        
+    .masonry-item {
+        width: 46.6%;
     }
 }
 

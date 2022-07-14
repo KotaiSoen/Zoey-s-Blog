@@ -1,0 +1,15 @@
+<div>
+    <app-navbar></app-navbar>
+    <form [formGroup]="editor" (ngSubmit)="onSubmit()">
+        <quill-editor
+        placeholder="Enter Text"
+        formControlName="text"
+        [styles]="editorStyle"
+        (onEditorChanged)="changedEditor($event)"
+        [modules]="modules"
+        >
+        </quill-editor>
+        <button mat-raised-button color='primary' type="submit">Submit</button>
+    </form>
+    <quill-view-html [content]="editorReviewText"></quill-view-html>
+</div>
