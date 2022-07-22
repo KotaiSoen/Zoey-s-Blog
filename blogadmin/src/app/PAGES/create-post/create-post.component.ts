@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
-import 'quill-emoji/dist/quill-emoji.js';
+import { Router } from '@angular/router';
+import { BlobService } from 'src/app/SERVICES/blob.service';
+import { PostService } from 'src/app/SERVICES/post.service';
 
-import Quill from 'quill'
-import BlotFormatter from 'quill-blot-formatter';
-
-Quill.register('modules/blotFormatter', BlotFormatter);
 
 
 @Component({
@@ -23,56 +20,31 @@ export class CreatePostComponent implements OnInit {
 
   editorReviewText = '';
 
-  modules = {}
+  modules = this.blobService.modules;
 
-  constructor(private builder: FormBuilder) {
-    this.modules = {
-      'emoji-shortname': true,
-      'emoji-textarea': false,
-      'emoji-toolbar': true,
-      blotFormatter: {
-
-      },
-      'toolbar': [
-        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-        ['blockquote', 'code-block'],
-
-        [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-        [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
-        [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
-        [{ 'direction': 'rtl' }],                         // text direction
-
-        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
-        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-        [{ 'font': [] }],
-        [{ 'align': [] }],
-
-        ['clean'],                                         // remove formatting button
-
-        ['link', 'image', 'video'],                         // link and image, video
-        ['emoji'],
-      ],
-      // handlers: { 'emoji': function () { } }
-    }
-  }
+  constructor(private builder: FormBuilder, private router: Router, private postService: PostService, private blobService: BlobService) {}
 
   ngOnInit(): void {
+    if(localStorage.getItem('reviewText') != null) {
+      this.editorReviewText = JSON.parse(localStorage.getItem('reviewText') || '{}');
+    }
     this.editor = this.builder.group({
-      'text': ''
+      text: ''
     })
   }
 
-  changedEditor(e: EditorChangeContent | EditorChangeSelection) {
-    console.log('editor got changed', e);
-    this.editorReviewText = e['editor']['root']['innerHTML'];
+  onChange(change: Event) {
+    // console.log(change);
+    localStorage.setItem('reviewText', JSON.stringify(this.editorReviewText));
   }
 
   onSubmit() {
-    console.log('hey')
-    console.log(this.editor.get('text')!.value)
+    const text = this.editor.get('text')?.value;
+    const date = new Date();
+    const post = { text, date };
+    this.postService.addPost(post);
+    localStorage.clear();
+    this.router.navigate(['home']);
   }
 
 }

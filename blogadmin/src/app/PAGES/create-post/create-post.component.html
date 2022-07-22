@@ -1,15 +1,23 @@
 <div>
     <app-navbar></app-navbar>
+    <div class="prompt">
+        <p>Enter your post details!</p>
+    </div>
     <form [formGroup]="editor" (ngSubmit)="onSubmit()">
         <quill-editor
         placeholder="Enter Text"
         formControlName="text"
         [styles]="editorStyle"
-        (onEditorChanged)="changedEditor($event)"
+        [(ngModel)]="editorReviewText"
+        (ngModelChange)="onChange($event)"
         [modules]="modules"
         >
         </quill-editor>
         <button mat-raised-button color='primary' type="submit">Submit</button>
     </form>
-    <quill-view-html [content]="editorReviewText"></quill-view-html>
+    <div *ngIf="editorReviewText != '' && editorReviewText != null" class="review">
+        <p>Review your post!</p>
+        <div class="divider"></div>
+        <quill-view-html [content]="editorReviewText"></quill-view-html>
+    </div>
 </div>

@@ -187,22 +187,23 @@
     width: 31%;
 }
 
-/* .masonry-item img {
-    width: 100%;
-    object-fit: contain;
-} */
-
 mat-card-title {
-    padding-top: 30px;
+    padding-top: 20px;
     padding-bottom: 20px;
-    font-weight: bold;
+    /* font-weight: bold; */
+
+}
+
+mat-card-image {
+    width: 100%;
+    height: 250px;
 }
 
 mat-card-content {
     padding-left: 15px;
     padding-top: 10px;
     padding-bottom: 20px;
-    font-size: 17px;
+    font-size: 14px;
 }
 
 .clickables-div {

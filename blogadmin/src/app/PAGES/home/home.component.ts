@@ -1,4 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Post } from 'src/app/MODELS/post';
+import { PostService } from 'src/app/SERVICES/post.service';
 
 @Component({
   selector: 'app-home',
@@ -6,48 +8,32 @@ import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren }
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, AfterViewInit {
-  @ViewChildren('blogPosts', { read: ElementRef})
+  @ViewChildren('blogPosts')
   posts!: QueryList<ElementRef>
 
   observer: any;
 
   intersected: boolean = false;
 
-  blogPosts = [
-    {
-      'title': 'Hello there',
-      'description': 'My name is bumpkin'
-    },
-    {
-      'title': 'Hey girl. There\'s something I gotta tell you. I really love you. More than you can imagine babe',
-      'description': 'You are my girl'
-    },
-    {
-      'title': 'Hey baby',
-      'description': 'Always be there for me baby'
-    },
-    {
-      'title': 'A woman',
-      'description': 'Always thought of as the weaker vessel, but her strength does not lie in her physical power'
-    },
-    {
-      'title': 'Hey baby',
-      'description': 'A man has always been the one to shut his feelings off and act like he isn\'t affected by what everyone says. But we all know how sensitive he is within'
-    },
-    {
-      'title': 'Hey God',
-      'description': 'Always be there for me God'
-    },
-  ]
+  blogPosts: Post[] = []
 
-  constructor() {}
+
+  constructor(private postService: PostService) {}
 
   ngOnInit(): void {
     this.intersectionObserver();
+    this.postService.posts.subscribe((res) => {
+      this.blogPosts = res;
+      console.log(this.blogPosts);
+    })
   }
 
   ngAfterViewInit(): void {
+    setTimeout(() => {
+      console.log(this.posts);
+    console.log(this.posts.last.nativeElement);
     this.observer.observe(this.posts.last.nativeElement);
+    }, 2000)
   }
 
   intersectionObserver() {
