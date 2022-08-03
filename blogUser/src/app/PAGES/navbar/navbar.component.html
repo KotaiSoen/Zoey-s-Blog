@@ -1,0 +1,28 @@
+<div class="navbar" *ngIf="innerWidth >= 573">
+    <div>
+        <h3>{{(blogName | async)?.blogName}}</h3>
+    </div>
+    <div class="pages">
+        <p routerLink="/home" class="hover">Home</p>
+        <p routerLink="/about" class="hover">About</p>
+        <p routerLink="/contact" class="hover">Contact Us</p>
+    </div>
+</div>
+<div *ngIf="innerWidth <= 572" class="responsive-navbar-div">
+    <div class="responsive-navbar-second-div">
+        <div class="responsive-navbar">
+            <div>
+                <h3>{{(blogName | async)?.blogName}}</h3>
+            </div>
+            <div class="mat-icon">
+                <mat-icon *ngIf="!open" (click)="openNavbar()" class="hover">menu</mat-icon>
+                <mat-icon *ngIf="open" (click)="openNavbar()" class="hover">clear</mat-icon>
+            </div>
+        </div>
+        <div class="links-shown" *ngIf="open">
+            <p routerLink="/home" class="hover">Home</p>
+            <p routerLink="/about" class="hover">About</p>
+            <p routerLink="/contact" class="hover">Contact Us</p>
+        </div>
+    </div>    
+</div>

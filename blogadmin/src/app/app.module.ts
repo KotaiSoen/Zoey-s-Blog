@@ -30,6 +30,9 @@ import { TitlePipe } from './PIPES/title.pipe';
 import { DescriptionPipe } from './PIPES/description.pipe';
 import { ImagePipe } from './PIPES/image.pipe';
 
+import { NgxSpinnerModule } from "ngx-spinner";
+import { LoginComponent } from './PAGES/login/login.component';
+
 
 
 @NgModule({
@@ -47,6 +50,7 @@ import { ImagePipe } from './PIPES/image.pipe';
     TitlePipe,
     DescriptionPipe,
     ImagePipe,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,9 +62,10 @@ import { ImagePipe } from './PIPES/image.pipe';
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
+    NgxSpinnerModule,
     QuillModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

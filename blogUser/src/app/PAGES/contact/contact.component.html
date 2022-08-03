@@ -1,0 +1,25 @@
+<div class="container">
+    <app-navbar></app-navbar>
+    <div class="main-box">
+        <p>Contact Us</p>
+        <form [formGroup]="emailForm" (ngSubmit)="submit(); emailForm.reset()">
+            <div [ngClass]="('input-box ' + (focus[0] ? 'focused' : ''))">
+                <mat-icon>account_circle</mat-icon>
+                <input type="text" placeholder="Name" formControlName="name" (focus)="onFocus(0)" (blur)="onBlur(0)" required>
+            </div>
+            <small *ngIf="emailForm.get('name')?.invalid">Name is required</small>
+            <div [ngClass]="('input-box ' + (focus[1] ? 'focused' : ''))">
+                <mat-icon>email</mat-icon>
+                <input type="email" placeholder="Email" formControlName="email" #email (focus)="onFocus(1)" (blur)="onBlur(1)">
+            </div>
+            <small *ngIf="emailForm.get('email')?.invalid">Valid email is required</small>
+            <div>
+                <textarea type="text" formControlName="content" [ngClass]="('email-content ' + (focus[2] ? 'email-content-focused' : ''))" placeholder="Your email content" (focus)="onFocus(2)" (blur)="onBlur(2)"></textarea>
+            </div>
+            <div>
+                <button mat-raised-button color="primary" type="submit" [disabled]="emailForm.invalid">Send</button>
+            </div>
+        </form>    
+    </div>
+    <app-footer></app-footer>
+</div>

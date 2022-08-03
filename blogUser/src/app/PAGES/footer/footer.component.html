@@ -1,0 +1,16 @@
+<div class="container">
+    <div>
+        <h2>{{(blogName | async)?.blogName}}</h2>
+    </div>
+    <div>
+        <p><fa-icon [icon]="faCopyright"></fa-icon>All Rights Reserved.</p>
+    </div>
+    <div class="contact">
+        <p routerLink="/contact" class="hover">Contact Us</p>
+        <div>
+            <fa-icon [icon]="faTwitter" class="hover"></fa-icon>
+            <fa-icon [icon]="faFacebook" class="hover"></fa-icon>
+            <fa-icon [icon]="faInstagram" class="hover"></fa-icon>
+        </div>
+    </div>
+</div>

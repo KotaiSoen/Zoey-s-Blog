@@ -1,3 +1,15 @@
 <app-navbar></app-navbar>
-<quill-editor [(ngModel)]="editorText" [styles]="editorStyle"></quill-editor>
-<quill-view-html [content]="editorText" theme="snow"></quill-view-html>
+<quill-editor
+[(ngModel)]="post" 
+[styles]="editorStyle" 
+(ngModelChange)="onChange($event)"
+[modules]="modules"
+>
+</quill-editor>
+<div class="submit-button">
+    <button mat-raised-button color='primary' (click)="onSubmit()">Submit</button>
+</div>
+
+
+<quill-view-html [content]="post" theme="snow" *ngIf="post"></quill-view-html>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

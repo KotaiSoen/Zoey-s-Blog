@@ -1,30 +1,33 @@
 <div>
     <app-navbar class="navbar"></app-navbar>
     <div class="main-div">
-        <div class="area" >
+        <div class="area" [style.background-image]="'url(' + backgroundImageUrl + ')'">
             <ul class="circles">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
             </ul>
-            <h1>Zoey's Blog</h1>
+            <h1>{{(blogName | async)?.blogName}}</h1>
         </div>
         <div class="post-area">
             <div class="recent-posts">
                 <p>My mother</p>
                 <h2>Recent posts</h2>
-                <button class="add-post hover" routerLink="/create-post"><mat-icon>add_circle</mat-icon>Add new post</button>
+                <button class="add-post hover" routerLink="/create-post">
+                    <mat-icon>add_circle</mat-icon>Add new post
+                </button>
             </div>
-            <ngx-masonry [options]="{ gutter: 44 }" style="width: 100%;" [ordered]="true" [ngClass]="{'intersected': intersected}">
-                <div ngxMasonryItem class="masonry-item" [prepend]="true" *ngFor="let post of blogPosts" #blogPosts>
+            <ngx-masonry [options]="{ gutter: 44 }" style="width: 100%;" [ordered]="true"
+                [ngClass]="{'intersected': intersected}">
+                <div ngxMasonryItem class="masonry-item" [prepend]="true" *ngFor="let post of blogPosts">
                     <mat-card>
                         <mat-card-header>
                             <mat-card-title>
@@ -37,11 +40,12 @@
                         </mat-card-content>
                         <div class="clickables-div">
                             <div class="button-div">
-                                <button class="hover" [routerLink]="['/read-more', post.id]">Read More<mat-icon>arrow_right_alt</mat-icon></button>
+                                <button class="hover" [routerLink]="['/read-more', post.id]">Read More<mat-icon>
+                                        arrow_right_alt</mat-icon></button>
                             </div>
                             <div class="icon-div">
-                                <mat-icon class="hover">create</mat-icon>
-                                <mat-icon class="hover">delete</mat-icon>
+                                <mat-icon class="hover" [routerLink]="['/edit-post', post.id]">create</mat-icon>
+                                <mat-icon class="hover" (click)="delete(post)">delete</mat-icon>
                             </div>
                         </div>
                     </mat-card>
@@ -50,5 +54,4 @@
         </div>
     </div>
 </div>
-
-
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

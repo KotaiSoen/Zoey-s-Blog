@@ -1,0 +1,13 @@
+<div class="container">
+    <app-navbar></app-navbar>
+    <div class="main-div">
+        <p>About the author</p>
+        <div class="last-div">
+            <img src="{{aboutImageUrl | async}}">
+            <p>{{aboutText}}</p>
+        </div>   
+    </div>
+    <app-footer></app-footer>
+</div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+

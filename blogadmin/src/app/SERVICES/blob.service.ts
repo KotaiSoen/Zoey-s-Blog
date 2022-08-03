@@ -8,7 +8,7 @@ Quill.register('modules/blotFormatter', BlotFormatter);
 Quill.register('modules/imageHandler', ImageHandler);
 
 
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { PostService } from './post.service';
 
@@ -73,7 +73,6 @@ export class BlobService {
     } as Options
   }
 
-  // downloadURL!: Observable<string>;
 
   async uploadFile(file: File) {
     const filePath = `/images/${Math.random().toString(36).substring(2)}`;
@@ -82,11 +81,28 @@ export class BlobService {
     const downloadURL = await fileRef.getDownloadURL().toPromise();
 
     return downloadURL;
+  }
 
+  biUpload(event: any) {
+    const file = event.target.files[0];
+    const filePath = '/image/background-image';
+    this.storage.upload(filePath, file);
     
+  }
 
-    
-    
+  async getBiImage() {
+    const fileRef = this.storage.ref('/image/background-image');
+    return await fileRef.getDownloadURL().toPromise();
+  }
 
+  aboutImageUpload(file: File) {
+    const filePath = '/image/about-image';
+    // const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+  }
+
+  async getAboutImage() {
+    const fileRef = this.storage.ref('/image/about-image');
+    return await fileRef.getDownloadURL().toPromise();
   }
 }

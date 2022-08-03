@@ -1,0 +1,46 @@
+.container {
+    height: 100px;
+    width: 100%;
+    /* margin-top: 50px; */
+    background: rgb(2, 24, 90);
+    color: white;
+    display: flex;
+    padding-inline: 80px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h2 {
+    font-weight: 700;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+fa-icon {
+    padding-right: 5px;
+}
+
+.contact fa-icon {
+    padding-inline: 10px;
+}
+
+@media (max-width: 767px) {
+    .container {
+        padding-inline: 20px;
+        font-size: 13px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    .contact fa-icon {
+        padding-inline: 2px;
+    }
+
+}

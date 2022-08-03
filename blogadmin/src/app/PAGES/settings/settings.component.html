@@ -1,1 +1,30 @@
-<p>settings works!</p>
+<div class="container">
+    <app-navbar></app-navbar>
+    <div class="main-div">
+        <div class="content-div">
+            <div class="form">
+                <p class="main-p">Select your Home background image</p>
+                <label for="background-image" class="hover"><mat-icon>add_a_photo</mat-icon></label>
+                <input type="file" id="background-image" (change)="biUpload($event)">
+            </div>
+            <div class="form">
+                <p class="main-p">Input your blog name</p>
+                <input type="text" placeholder="blog name..." #blogName>
+            </div>
+            <div class="form">
+                <p class="main-p">Customize your about-page</p>
+                <div class="form">
+                    <p>Select your about-page image:</p>
+                    <label for="about-image" class="about-image hover"><mat-icon>add_a_photo</mat-icon></label>
+                    <input type="file" name="about-image" id="about-image" (change)="aboutImageUpload($event)">
+                </div>
+                <div class="form">
+                    <p>Input the info you want displayed on the about-page:</p>
+                    <textarea name="about-info" class="about-info" #aboutText></textarea>
+                    <button mat-raised-button color="primary" (click)="createAboutText(aboutText.value, blogName.value)">Save your info</button>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+

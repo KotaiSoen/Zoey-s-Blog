@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "zoey-s-blog": {
+      "hosting": {
+        "blogUser": [
+          "zoey-s-blog"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "zoey-s-blog"
+  }
+}
