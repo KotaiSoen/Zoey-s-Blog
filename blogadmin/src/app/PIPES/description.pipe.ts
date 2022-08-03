@@ -7,7 +7,7 @@ export class DescriptionPipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): string {
 
-    const description = value.match(/<p(.*)>[^<](.*)<\/p>/g)!;
+    const description = value.match(/<p>[^<](.*)<\/p>/g)!;
 
     // if(description) {
     //   return description[0].match(/[^<p>](.*)[^</p>]/g)!.join('');
