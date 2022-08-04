@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BlobService } from 'src/app/SERVICES/blob.service';
 import { PostService } from 'src/app/SERVICES/post.service';
 
@@ -14,13 +14,13 @@ export class AboutComponent implements OnInit {
 
   aboutImageUrl!: Promise<any>;
 
-  constructor(private postService: PostService, private blobService: BlobService, private spinner: NgxSpinnerService) { }
+  constructor(private postService: PostService, private blobService: BlobService, private spinner: NgxUiLoaderService) { }
 
   ngOnInit(): void {
-    this.spinner.show();
+    this.spinner.start();
     this.postService.getAboutText().subscribe(text => {
       this.aboutText = text!.text;
-      this.spinner.hide();
+      this.spinner.stop();
     });
     this.aboutImageUrl = this.blobService.getAboutImage();
     

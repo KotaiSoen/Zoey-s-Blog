@@ -25,8 +25,8 @@ import { ShortenPipe } from './PIPES/shorten.pipe';
 import { TitlePipe } from './PIPES/title.pipe';
 import { ImagePipe } from './PIPES/image.pipe';
 import { NgxMasonryModule } from 'ngx-masonry';
-import { NgxSpinnerModule } from 'ngx-spinner';
 import { QuillModule } from 'ngx-quill';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { FooterComponent } from './PAGES/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -56,8 +56,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
     FormsModule,
     NgxMasonryModule,
-    NgxSpinnerModule,
     FontAwesomeModule,
+    NgxUiLoaderModule,
     QuillModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule
