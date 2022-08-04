@@ -18,6 +18,6 @@ export class AuthService {
   }
 
   changePassword(email: string) {
-    return this.auth.sendPasswordResetEmail(email, {url: 'http://localhost:4200/login'});
+    return this.auth.sendPasswordResetEmail(email);
   }
 }
