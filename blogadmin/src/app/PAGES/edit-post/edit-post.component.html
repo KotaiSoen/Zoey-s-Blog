@@ -4,11 +4,13 @@
 [styles]="editorStyle" 
 (ngModelChange)="onChange($event)"
 [modules]="modules"
+*ngIf="post !== ''"
 >
 </quill-editor>
-<div class="submit-button">
+<div class="submit-button" *ngIf="post !== ''">
     <button mat-raised-button color='primary' (click)="onSubmit()">Submit</button>
 </div>
 
 
-<quill-view-html [content]="post" theme="snow" *ngIf="post"></quill-view-html>
+<quill-view-html [content]="post" theme="snow" *ngIf="post && post !== ''"></quill-view-html>
+<h2 *ngIf="post == ''">Please refresh and go back</h2>

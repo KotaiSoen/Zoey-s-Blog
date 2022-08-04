@@ -36,7 +36,7 @@ export class EditPostComponent implements OnInit, CanComponentLeave {
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem('reviewText') === null || localStorage.getItem('reviewText') === 'null' || localStorage.getItem('reviewText') === '') {
+    if(localStorage.getItem('reviewText') === null || localStorage.getItem('reviewText') === 'null' || localStorage.getItem('reviewText') === "") {
       this.route.params.subscribe((params) => {
         this.id = params['id'];
         localStorage.setItem('id', this.id);
