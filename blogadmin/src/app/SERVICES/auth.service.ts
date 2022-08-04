@@ -18,6 +18,6 @@ export class AuthService {
   }
 
   changePassword(email: string) {
-    return this.auth.sendPasswordResetEmail(email, {url: 'https://zoeysadmin.netlify.app/login'});
+    return this.auth.sendPasswordResetEmail(email);
   }
 }
