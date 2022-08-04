@@ -30,7 +30,7 @@ import { TitlePipe } from './PIPES/title.pipe';
 import { DescriptionPipe } from './PIPES/description.pipe';
 import { ImagePipe } from './PIPES/image.pipe';
 
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoginComponent } from './PAGES/login/login.component';
 
 
