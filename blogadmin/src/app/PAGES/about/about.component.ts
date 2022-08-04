@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { getMatIconNameNotFoundError } from '@angular/material/icon';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
 import { BlobService } from 'src/app/SERVICES/blob.service';
 import { PostService } from 'src/app/SERVICES/post.service';
@@ -16,13 +15,11 @@ export class AboutComponent implements OnInit {
 
   aboutImageUrl!: Promise<any>;
 
-  constructor(private postService: PostService, private blobService: BlobService, private spinner: NgxSpinnerService) { }
+  constructor(private postService: PostService, private blobService: BlobService) { }
 
   ngOnInit(): void {
-    this.spinner.show();
     this.postService.getAboutText().subscribe(text => {
       this.aboutText = text!.text;
-      this.spinner.hide();
     });
     this.aboutImageUrl = this.blobService.getAboutImage();
     

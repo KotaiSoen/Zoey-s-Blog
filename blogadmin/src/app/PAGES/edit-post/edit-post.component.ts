@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { CanComponentLeave } from 'src/app/GUARDS/unsaved-changes.guard';
 import { Post } from 'src/app/MODELS/post';
 import { BlobService } from 'src/app/SERVICES/blob.service';
@@ -27,7 +26,7 @@ export class EditPostComponent implements OnInit, CanComponentLeave {
 
   modules = this.blobService.modules;
 
-  constructor(private route: ActivatedRoute, private router: Router, private postService: PostService, private blobService: BlobService, private spinner: NgxSpinnerService) {}
+  constructor(private route: ActivatedRoute, private router: Router, private postService: PostService, private blobService: BlobService) {}
 
   canLeave(): boolean {
     if(!this.submitted) {
@@ -37,7 +36,6 @@ export class EditPostComponent implements OnInit, CanComponentLeave {
   }
 
   ngOnInit(): void {
-    this.spinner.show();
     if(localStorage.getItem('reviewText') === null || localStorage.getItem('reviewText') === 'null' || localStorage.getItem('reviewText') === '') {
       this.route.params.subscribe((params) => {
         this.id = params['id'];
@@ -46,14 +44,12 @@ export class EditPostComponent implements OnInit, CanComponentLeave {
           this.postInfo = data!;
           localStorage.setItem('postInfo', JSON.stringify(this.postInfo))
           this.post = data!.text;
-          this.spinner.hide();
         })
       })
     } else {
       this.post = localStorage.getItem('reviewText')!;
       this.postInfo = JSON.parse(localStorage.getItem('postInfo')!);
       this.id = localStorage.getItem('id')!;
-      this.spinner.hide();
     }
   }
 

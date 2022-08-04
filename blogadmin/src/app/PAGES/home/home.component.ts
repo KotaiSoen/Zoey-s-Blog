@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
 import { Post } from 'src/app/MODELS/post';
 import { BlobService } from 'src/app/SERVICES/blob.service';
@@ -26,10 +25,9 @@ export class HomeComponent implements OnInit {
   blogName!: Observable<any>;
 
 
-  constructor(private postService: PostService, private blobService: BlobService, private spinner: NgxSpinnerService) { }
+  constructor(private postService: PostService, private blobService: BlobService) { }
 
   ngOnInit(): void {
-    this.spinner.show();
     // this.intersectionObserver();
     this.blobService.getBiImage().then((data) => {
       this.backgroundImageUrl = data;
@@ -38,30 +36,10 @@ export class HomeComponent implements OnInit {
     this.postService.posts.subscribe((res) => {
       this.blogPosts = res;
       console.log(this.blogPosts);
-      this.spinner.hide();
     })
   }
 
   delete(post: Post) {
     this.postService.deletePost(post);
   }
-
-  // ngAfterViewInit(): void {
-  //     console.log(this.posts);
-  //   console.log(this.posts.last.nativeElement);
-  //   this.observer.observe(this.posts.last.nativeElement);
-  // }
-
-  // intersectionObserver() {
-  // let options = {
-  //   rootMargin: '0px',
-  //   threshold: 0.05,
-  // }
-
-  //   this.observer = new IntersectionObserver((entries) => {
-  //     if (entries[0].isIntersecting) {
-  //       this.intersected = true;
-  //     }
-  //   }, options);
-  // }
 }
