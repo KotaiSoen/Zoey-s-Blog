@@ -14,6 +14,8 @@ import { PostService } from 'src/app/SERVICES/post.service';
 })
 export class HomeComponent implements OnInit {
 
+  SPINNER = SPINNER;
+
   intersected: boolean = false;
 
   blogPosts: Post[] = [];

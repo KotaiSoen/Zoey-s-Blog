@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { CanComponentLeave } from 'src/app/GUARDS/unsaved-changes.guard';
 import { Post } from 'src/app/MODELS/post';
 import { BlobService } from 'src/app/SERVICES/blob.service';
@@ -26,7 +27,7 @@ export class EditPostComponent implements OnInit, CanComponentLeave {
 
   modules = this.blobService.modules;
 
-  constructor(private route: ActivatedRoute, private router: Router, private postService: PostService, private blobService: BlobService) {}
+  constructor(private route: ActivatedRoute, private router: Router, private postService: PostService, private blobService: BlobService, private loader: NgxUiLoaderService) {}
 
   canLeave(): boolean {
     if(!this.submitted) {
@@ -36,6 +37,7 @@ export class EditPostComponent implements OnInit, CanComponentLeave {
   }
 
   ngOnInit(): void {
+    this.loader.start();
     if(localStorage.getItem('reviewText') === null || localStorage.getItem('reviewText') === 'null' || localStorage.getItem('reviewText') === "") {
       this.route.params.subscribe((params) => {
         this.id = params['id'];
@@ -43,13 +45,15 @@ export class EditPostComponent implements OnInit, CanComponentLeave {
         this.postService.getOnePost(this.id).subscribe((data) => {
           this.postInfo = data!;
           localStorage.setItem('postInfo', JSON.stringify(this.postInfo))
-          this.post = data!.text;
+          this.post = data?.text;
+          this.loader.stop();
         })
       })
     } else {
       this.post = localStorage.getItem('reviewText')!;
       this.postInfo = JSON.parse(localStorage.getItem('postInfo')!);
       this.id = localStorage.getItem('id')!;
+      this.loader.stop();
     }
   }
 
