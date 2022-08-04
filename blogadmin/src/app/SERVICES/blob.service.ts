@@ -4,7 +4,9 @@ import { ImageHandler, Options } from 'ngx-quill-upload';
 import Quill from 'quill';
 import 'quill-emoji/dist/quill-emoji.js';
 import BlotFormatter from 'quill-blot-formatter';
+import BlotFormat from 'quill-blot-formatter-mobile';
 Quill.register('modules/blotFormatter', BlotFormatter);
+Quill.register('modules/blotFormatter', BlotFormat);
 Quill.register('modules/imageHandler', ImageHandler);
 
 

@@ -45,12 +45,11 @@ export class EditPostComponent implements OnInit, CanComponentLeave {
         this.postService.getOnePost(this.id).subscribe((data) => {
           this.postInfo = data!;
           localStorage.setItem('postInfo', JSON.stringify(this.postInfo))
-          this.post = data?.text;
+          this.post = data!.text;
           this.spinner.hide();
         })
       })
     } else {
-      console.log('nonsense');
       this.post = localStorage.getItem('reviewText')!;
       this.postInfo = JSON.parse(localStorage.getItem('postInfo')!);
       this.id = localStorage.getItem('id')!;
@@ -74,7 +73,6 @@ export class EditPostComponent implements OnInit, CanComponentLeave {
   }
 
   ngOnDestroy() {
-    console.log('destroying');
     localStorage.clear();
   }
 
