@@ -26,6 +26,7 @@
     "ngx-masonry": "^13.0.0",
     "ngx-quill": "^15.0.0",
     "ngx-quill-upload": "^2.0.0",
+    "ngx-spinner": "^13.1.1",
     "quill": "^1.3.7",
     "quill-blot-formatter": "^1.0.5",
     "quill-blot-formatter-mobile": "^1.1.1",

@@ -10,6 +10,7 @@ import { AboutComponent } from './PAGES/about/about.component';
 import { NavbarComponent } from './PAGES/navbar/navbar.component';
 
 import { NgxMasonryModule } from 'ngx-masonry';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -59,6 +60,7 @@ import { LoginComponent } from './PAGES/login/login.component';
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
+    NgxSpinnerModule,
     QuillModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,

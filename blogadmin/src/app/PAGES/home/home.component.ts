@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable } from 'rxjs';
 import { Post } from 'src/app/MODELS/post';
 import { BlobService } from 'src/app/SERVICES/blob.service';
@@ -25,10 +26,10 @@ export class HomeComponent implements OnInit {
   blogName!: Observable<any>;
 
 
-  constructor(private postService: PostService, private blobService: BlobService) { }
+  constructor(private postService: PostService, private blobService: BlobService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
-    // this.intersectionObserver();
+    this.spinner.show()
     this.blobService.getBiImage().then((data) => {
       this.backgroundImageUrl = data;
     })
@@ -36,6 +37,7 @@ export class HomeComponent implements OnInit {
     this.postService.posts.subscribe((res) => {
       this.blogPosts = res;
       console.log(this.blogPosts);
+      this.spinner.hide();
     })
   }
 
