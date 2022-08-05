@@ -54,7 +54,7 @@
     width: 100%;
     padding-left: 30px;
     position: absolute;
-    background: #022a5a;
+    background: rgb(3, 26, 95);
     color: white;
     animation: shown 0.2s ease-in;
 }
