@@ -14,7 +14,7 @@
                     </div>
                     <div class="small">
                         <small *ngIf="checkInForm.errors?.unauthenticated">Email or password is incorrect!</small>
-                        <small (click)="resetPassword(email.value)" class='forgot-password'>Forgot password?</small>
+                        <small (click)="resetPassword(email.value)" class='forgot-password hover'>Forgot password?</small>
                     </div>
                     <button class="login pointer" type="submit">Login</button>
                 </form>
