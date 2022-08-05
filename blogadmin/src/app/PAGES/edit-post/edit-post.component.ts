@@ -44,8 +44,8 @@ export class EditPostComponent implements OnInit, CanComponentLeave {
         localStorage.setItem('id', this.id);
         this.postService.getOnePost(this.id).subscribe((data) => {
           this.postInfo = data!;
+          this.post = data!.text;
           localStorage.setItem('postInfo', JSON.stringify(this.postInfo))
-          this.post = data?.text;
           this.loader.stop();
         })
       })
