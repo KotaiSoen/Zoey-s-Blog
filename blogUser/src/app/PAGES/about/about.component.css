@@ -15,31 +15,22 @@
     padding-inline: 90px;
 }
 
-.main-div p {
+.main-p {
     font-size: 35px;
     font-weight: bold;
 }
 
-.last-div {
-    padding-top: 60px;
-    background-color: #f0eeea;
-}
-
 img {
     object-fit: contain;
-    float: left;
     height: 400px;
     border-radius: 10px;
-    margin-right: 30px;
-    /* margin-bottom: 20px; */
-    flex-shrink: 0;
+    margin-top: 30px;
 }
 
-.last-div p {
-    margin-top: -5px;
+.last-p {
+    margin-top: 20px;
     font-size: 18px;
     font-weight: 600;
-    /* flex-grow: 1; */
 }
 
 @media (max-width: 768px) {
@@ -47,7 +38,7 @@ img {
         padding-inline: 40px;
     }
 
-    .main-div p {
+    .main-p {
         font-size: 28px;
     }
 
@@ -56,7 +47,7 @@ img {
         margin-right: 20px;
     }
 
-    .last-div p {
+    .last-p {
         font-size: 16px;
     }
 }
