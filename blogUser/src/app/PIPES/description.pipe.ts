@@ -7,12 +7,16 @@ export class DescriptionPipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): string {
 
-    const description = value.match(/<p>[^<](.*)<\/p>/g)!;
+    const arr = [];
+    let description = new DOMParser().parseFromString(value, 'text/html');
+    const parsedHtml: HTMLCollection = description.getElementsByTagName('p');
+    for (let i = 0; i < parsedHtml.length; i++) {
+      if(parsedHtml[i].textContent) {
+        arr.push(parsedHtml[i].textContent);
+      };
+    }
 
-    let parser = new DOMParser();
-    let parsedHtml = parser.parseFromString(description[0], 'text/html');
-    let pContent = parsedHtml.querySelector('p')!.textContent!;
-    return pContent;
+    return arr[0]!;
   
   }
 
